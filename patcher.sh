@@ -1,10 +1,8 @@
 #!/bin/bash
 
-path=$1
-
-files=$(find "$1" -type f)
+files=$(find "./origin" -type f)
 
 for file in $files; do
-	fontforge -script nerd-fonts/font-patcher --complete --adjust-line-height --careful $file -out $2
-	fontforge -script nerd-fonts/font-patcher --complete --adjust-line-height --careful $file -out $2/single
+  fontforge -script nerd-fonts/font-patcher -c -l --careful $file -out ./nerd-font
+  fontforge -script nerd-fonts/font-patcher -c -l -s --careful $file -out ./mono
 done
